@@ -3,7 +3,7 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Product = (props) => {
-    const {img, name, price, seller, ratings, id} = props.product;
+    const {img, name, price, seller, ratings} = props.product;
     const addToCart = props.addToCart;
     return (
         <div className="relative border-solid border-2 border-[#95A0A7] rounded-lg h-[508px]">
