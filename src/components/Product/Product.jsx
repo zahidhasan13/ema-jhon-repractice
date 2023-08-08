@@ -3,10 +3,10 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Product = (props) => {
-    const {img, name, price, seller, ratings} = props.product;
+    const {img, name, price, seller, ratings                                                          } = props.product;
     const addToCart = props.addToCart;
     return (
-        <div className="relative border-solid border-2 border-[#95A0A7] rounded-lg h-[508px]">
+        <div className="relative border-solid border-2 border-[#95A0A7] rounded-lg h-[508px] mb-4">
             <img src={img} alt="" className="w-[286px] rounded-lg mx-auto mt-2"/>
             <div className="ml-2 mt-4">
                 <h2 className="text-xl font-medium">{name}</h2>

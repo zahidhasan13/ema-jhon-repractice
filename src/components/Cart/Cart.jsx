@@ -15,7 +15,7 @@ const Cart = ({cart}) => {
     const tax = (totalPrice*2)/100;
     const grandTotal = totalPrice + totalShipping + tax;
     return (
-        <div className="px-4 sticky top-0 space-y-4">
+        <div className="px-4 sticky top-[80px] space-y-4">
             <h1 className="text-2xl text-center">Order Summary</h1>
             <p><strong>Selected Item: {quantity}</strong></p>
             <p className="text-lg font-medium">Total: ${totalPrice}</p>

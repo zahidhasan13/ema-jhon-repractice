@@ -25,7 +25,7 @@ const Shop = () => {
         newCart = [...cart, product];
     }else{
         exist.quantity = exist.quantity + 1;
-        const remaining = exist.filter(pd => pd.id !== product.id)
+        const remaining = cart.filter(pd => pd.id !== product.id)
         newCart = [...remaining, exist];
     }
 
@@ -52,9 +52,9 @@ const Shop = () => {
 
   return (
     <div className="flex">
-      <div className="basis-3/4 pt-4 px-8">
+      <div className="basis-[70%] md:basis-3/4 pt-4 px-8">
         <h1 className="text-2xl mb-2">All Products</h1>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 md:gap-4">
           {products.map((product) => (
             <Product
               product={product}
@@ -64,7 +64,7 @@ const Shop = () => {
           ))}
         </div>
       </div>
-      <div className="basis-1/4 bg-pink-300 pt-4">
+      <div className="basis-[30%] md:basis-1/4 bg-pink-300 pt-4">
         <Cart cart={cart}></Cart>
       </div>
     </div>
