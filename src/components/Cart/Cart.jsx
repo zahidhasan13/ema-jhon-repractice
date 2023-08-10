@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
 
-const Cart = ({cart}) => {
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+const Cart = ({cart, clearCart, children}) => {
 
 
     let totalPrice = 0;
@@ -22,6 +25,8 @@ const Cart = ({cart}) => {
             <p className="text-lg font-medium">Shipping: ${totalShipping}</p>
             <p className="text-lg font-medium">Tax: ${tax}</p>
             <p className="text-lg font-medium">Grand Total: ${grandTotal}</p>
+            <button onClick={clearCart} className="w-full text-center bg-red-600 py-2 text-white text-xl font-medium rounded">Clear Cart <FontAwesomeIcon icon={faTrashAlt}/></button>
+            {children}
         </div>
     );
 };
