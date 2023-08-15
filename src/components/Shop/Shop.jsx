@@ -1,15 +1,16 @@
-import { useState } from "react";
-import Cart from "../Cart/Cart";
-import { useEffect } from "react";
-import Product from "../Product/Product";
-import { addToDb, getShoppingCart } from "../../utilities/fakedb";
-import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+import { addToDb, getShoppingCart } from "../../utilities/fakedb";
+import Cart from "../Cart/Cart";
+import Product from "../Product/Product";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  const {user} = useContext(AuthContext)
 
   useEffect(() => {
     fetch(

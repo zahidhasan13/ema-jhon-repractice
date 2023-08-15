@@ -1,8 +1,19 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import logo from '../../assets/Logo.svg';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const {user, logOutUser} = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOutUser()
+        .then(()=>{})
+        .catch((err)=>{
+          console.log(err)
+        })
+      }
+
     return (
         <nav className="border-gray-200 px-4 md:px-6 py-2.5 bg-gray-800 sticky top-0 z-50">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
@@ -27,8 +38,21 @@ const Header = () => {
                     <li>
                         <Link to="/inventory" className="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-primary-700 md:p-0 hover:text-yellow-600 hover:bg-gray-700 md:hover:bg-transparent border-gray-700">Manage Inventory</Link>
                     </li>
+                    {
+                        !user && <li><Link to="/login" className="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-primary-700 md:p-0 hover:text-yellow-600 hover:bg-gray-700 md:hover:bg-transparent border-gray-700">Log In</Link>
+                        </li>
+                    }
+                    {
+                        !user && <li>
+                        <Link to="/register" className="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-primary-700 md:p-0 hover:text-yellow-600 hover:bg-gray-700 md:hover:bg-transparent border-gray-700">Register</Link>
+                    </li>
+                    }
                     <li>
-                        <Link to="/login" className="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-primary-700 md:p-0 hover:text-yellow-600 hover:bg-gray-700 md:hover:bg-transparent border-gray-700">Log In</Link>
+                        {
+                            user && <>
+                            <span className='text-white mr-4'>{user.email}</span><button onClick={handleLogOut} className='bg-red-400 px-4 rounded'>Log out</button>
+                            </>
+                        }
                     </li>
                 </ul>
             </div>
